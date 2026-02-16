@@ -5,3 +5,7 @@ export { default as ProductsTable } from "./products/ProductsTable";
 export { default as CustomersTable } from "./customers/CustomersTable";
 export { default as CustomerPageClient } from "./customers/CustomerPageClient";
 export { default as AddCustomerModal } from "./customers/AddCustomerModal";
+export { PromotionCard } from "./dashboard/PromotionCard";
+export { RecentActivity } from "./dashboard/RecentActivity";
+export { StatsCards } from "./dashboard/StatsCards";
+export { TrendingProduct } from "./dashboard/TrendingProduct";

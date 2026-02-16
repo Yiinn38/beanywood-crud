@@ -1,9 +1,5 @@
 import { fetchDashboardStats, fetchRecentActivity, fetchTrendingProduct } from "@/lib/data";
-import { StatsCards } from "./StatsCards";
-import { RecentActivity } from "./RecentActivity";
-import { TrendingProduct } from "./TrendingProduct";
-import { PromotionCard } from "./PromotionCard";
-import { DateWidget } from "@/components";
+import { DateWidget, StatsCards, RecentActivity, TrendingProduct, PromotionCard } from "@/components";
 
 export const metadata = {
   title: "Dashboard",
