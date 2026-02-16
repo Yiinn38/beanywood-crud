@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { ActiveLink } from "../active-link/ActiveLink";
 import { IconLayoutDashboard, IconMilk, IconUsers, IconCoins, IconLogout, IconCoffee, IconUserCircle } from "@tabler/icons-react";
+import { login } from "../../lib/auth";
 
 const routes = [
   { path: "/dashboard", text: "Dashboard", icon: IconLayoutDashboard },
@@ -11,10 +12,7 @@ const routes = [
   { path: "/sales", text: "Sales", icon: IconCoins },
 ];
 
-const user = {
-  name: "Cesar Romero",
-  role: "Manager",
-};
+const user = login();
 
 export const Sidebar = () => {
   return (
