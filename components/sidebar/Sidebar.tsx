@@ -18,7 +18,7 @@ const user = {
 
 export const Sidebar = () => {
   return (
-    <aside className="flex flex-col w-64 h-screen bg-white rounded-r-[3.75rem] py-5 shadow-2xl ">
+    <aside className="flex flex-col w-64 h-screen bg-white rounded-r-3xl py-5 shadow-2xl ">
       <Link href="/" className="flex gap-2 items-center text-2xl text-amber-950 px-6 font-bold  hover:scale-105 transition-all duration-200">
         <IconCoffee stroke={2} size={28} className="text-amber-700" />
         Beanywood
