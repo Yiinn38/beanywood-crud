@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@tabler/icons-react": "^3.36.1",
+    "mysql2": "^3.17.2",
     "next": "16.1.6",
     "react": "19.2.3",
     "react-dom": "19.2.3"
