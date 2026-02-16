@@ -29,7 +29,6 @@ export function RecentActivity({ activities }: RecentActivityProps) {
                 <td className="px-6 py-4 font-bold text-amber-600">{item.id}</td>
                 <td className="px-6 py-4">
                   <div className="flex items-center gap-3">
-                    {/* Placeholder for image - using emoji if no image, or a generic placeholder */}
                     <div className="w-10 h-10 rounded-lg bg-slate-100 flex items-center justify-center text-xl shrink-0">☕️</div>
                     <span className="font-bold text-slate-700">{item.product}</span>
                   </div>

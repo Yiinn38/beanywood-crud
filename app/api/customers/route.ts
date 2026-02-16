@@ -18,7 +18,6 @@ export async function GET(req: NextRequest) {
       values.push(searchTerm, searchTerm, searchTerm);
     }
 
-    // Get total count for pagination
     let countSql = "SELECT COUNT(*) as total FROM customers";
     const countValues: (string | number)[] = [];
     if (search) {
@@ -30,7 +29,6 @@ export async function GET(req: NextRequest) {
     const countResult = (await query(countSql, countValues)) as { total: number }[];
     const total = countResult[0].total;
 
-    // Add pagination to main query
     sql += " ORDER BY created_at DESC LIMIT ? OFFSET ?";
     values.push(limit, offset);
 
@@ -53,7 +51,6 @@ export async function POST(req: NextRequest) {
     const body = await req.json();
     const { first_name, last_name, email, phone_number, notes } = body;
 
-    // Basic validation
     if (!first_name || !last_name || !email) {
       return NextResponse.json({ error: "First name, last name, and email are required" }, { status: 400 });
     }
@@ -69,7 +66,6 @@ export async function POST(req: NextRequest) {
   } catch (error) {
     console.error("Error creating customer:", error);
 
-    // Check for duplicate email
     if ((error as { code?: string }).code === "ER_DUP_ENTRY") {
       return NextResponse.json({ error: "Email already exists" }, { status: 409 });
     }

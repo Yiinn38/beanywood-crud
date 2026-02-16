@@ -13,7 +13,6 @@ export function TrendingProduct({ product }: TrendingProductProps) {
       <h2 className="text-lg font-bold text-slate-800 mb-6">Trending Product</h2>
 
       <div className="relative rounded-2xl overflow-hidden h-48 bg-amber-900 mb-4 group cursor-pointer">
-        {/* Fallback image if no URL provided */}
         <div className="absolute inset-0 flex items-center justify-center text-white opacity-20 text-6xl">☕️</div>
 
         <div className="absolute top-3 right-3 bg-white/90 backdrop-blur-sm px-3 py-1 rounded-lg text-xs font-bold text-amber-800 shadow-sm">{product.tag}</div>

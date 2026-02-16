@@ -19,7 +19,6 @@ export interface RecentActivityItem {
 }
 
 export async function fetchDashboardStats(): Promise<DashboardStats> {
-  // Parallelize queries for better performance
   const [productsCountResult, customersCountResult, lowStockResult] = await Promise.all([
     query("SELECT COUNT(*) as count FROM products"),
     query("SELECT COUNT(*) as count FROM customers"),
@@ -30,7 +29,6 @@ export async function fetchDashboardStats(): Promise<DashboardStats> {
   const activeClients = (customersCountResult as RowDataPacket[])[0].count;
   const lowStockCount = (lowStockResult as RowDataPacket[])[0].count;
 
-  // Mock data for sales and revenue
   const totalSales = 12450;
   const dailyRevenue = 840.5;
 
@@ -44,7 +42,6 @@ export async function fetchDashboardStats(): Promise<DashboardStats> {
 }
 
 export async function fetchRecentActivity(): Promise<RecentActivityItem[]> {
-  // Mock data for recent activity
   return [
     {
       id: "#4821",
@@ -60,7 +57,7 @@ export async function fetchRecentActivity(): Promise<RecentActivityItem[]> {
       customer: "Sarah Smith",
       amount: 3.75,
       status: "Completed",
-      image: "croissant.jpeg", // Assuming we have this icon/image
+      image: "croissant.jpeg",
     },
     {
       id: "#4819",
@@ -90,22 +87,19 @@ export async function fetchRecentActivity(): Promise<RecentActivityItem[]> {
 }
 
 export async function fetchTrendingProduct() {
-  // Check if we have an image url for the product in the db, otherwise mock
-  // For now, let's try to get a real product from DB
   const result = await query("SELECT * FROM products ORDER BY price DESC LIMIT 1");
   const product = (result as RowDataPacket[])[0];
 
   if (product) {
     return {
       name: product.name,
-      sold: 142, // Mocked
+      sold: 142,
       price: Number(product.price),
       image: product.image_url || "latte.jpeg",
       tag: "#1 Seller",
     };
   }
 
-  // Fallback mock
   return {
     name: "Caramel Macchiato",
     sold: 142,

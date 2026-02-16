@@ -17,7 +17,6 @@ export default async function DashboardPage() {
   return (
     <div className="p-8 bg-slate-50 min-h-screen font-sans">
       <div className="max-w-7xl mx-auto space-y-8">
-        {/* Header */}
         <div className="flex justify-between items-start">
           <nav className="space-y-1">
             <h1 className="text-3xl text-slate-900 font-extrabold tracking-tight">Dashboard</h1>
@@ -27,17 +26,13 @@ export default async function DashboardPage() {
           <DateWidget />
         </div>
 
-        {/* Stats Grid */}
         <StatsCards {...stats} />
 
-        {/* Main Content Grid */}
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-          {/* Left Column - Recent Activity */}
           <div className="lg:col-span-2 h-full">
             <RecentActivity activities={recentActivities} />
           </div>
 
-          {/* Right Column - Trending & Promotions */}
           <div className="flex flex-col gap-6">
             <TrendingProduct product={trendingProduct} />
 

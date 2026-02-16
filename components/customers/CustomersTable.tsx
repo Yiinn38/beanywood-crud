@@ -34,9 +34,7 @@ export default function CustomersTable({ customers, totalPages, currentPage, tot
   const [selectedCustomer, setSelectedCustomer] = useState<Customer | null>(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
 
-  // Mock function to generate random purchase amount for UI demo
   const getPurchaseAmount = (id: number) => {
-    // seeded random-ish based on id
     const amounts = [1240.0, 850.5, 0.0, 45.2, 3200.0];
     return amounts[id % amounts.length].toFixed(2);
   };
@@ -63,7 +61,7 @@ export default function CustomersTable({ customers, totalPages, currentPage, tot
         throw new Error(error.error || "Failed to save customer");
       }
 
-      router.refresh(); // Refresh server components to show new data
+      router.refresh();
       setIsModalOpen(false);
       setSelectedCustomer(null);
     } catch (error) {
@@ -93,7 +91,6 @@ export default function CustomersTable({ customers, totalPages, currentPage, tot
                 <div className="flex items-center space-x-3">
                   <div className="h-10 w-10 relative shrink-0">
                     <div className="h-10 w-10 rounded-full bg-orange-100 flex items-center justify-center text-orange-700 font-medium text-sm">
-                      {/* Simple initial Avatar if no image */}
                       {customer.first_name[0]}
                       {customer.last_name[0]}
                     </div>

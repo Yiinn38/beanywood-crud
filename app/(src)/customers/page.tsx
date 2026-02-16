@@ -1,9 +1,7 @@
 import { CustomersTable, CustomerPageClient } from "@/components";
 
-// Server component to fetch initial data
 async function getCustomers(page: number, limit: number, search?: string) {
   try {
-    // We can reuse the DB logic directly since we are on the server
     const { query } = await import("@/lib/db");
 
     let sql = "SELECT * FROM customers";
@@ -15,14 +13,12 @@ async function getCustomers(page: number, limit: number, search?: string) {
       values.push(searchTerm, searchTerm, searchTerm);
     }
 
-    // Pagination
     const offset = (page - 1) * limit;
     sql += " ORDER BY created_at DESC LIMIT ? OFFSET ?";
     values.push(limit, offset);
 
     const customers = await query(sql, values);
 
-    // Count
     let countSql = "SELECT COUNT(*) as total FROM customers";
     const countValues: (string | number)[] = [];
     if (search) {
@@ -57,9 +53,7 @@ export default async function CustomersPage({ searchParams }: { searchParams: Pr
 
   const { customers, total, totalPages } = await getCustomers(page, limit, search);
 
-  // We need to calculate new clients this month for the stats
   const { query } = await import("@/lib/db");
-  // Simple query for this month
   const newClientsResult = (await query(`
       SELECT COUNT(*) as count 
       FROM customers 
@@ -95,11 +89,10 @@ export default async function CustomersPage({ searchParams }: { searchParams: Pr
                 />
               </form>
             </div>
-            <CustomerPageClient>{/* The client component will render the "Register New Client" button and Modal */}</CustomerPageClient>
+            <CustomerPageClient></CustomerPageClient>
           </div>
         </div>
 
-        {/* Stats Cards */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           <div className="bg-white p-6 rounded-lg shadow-sm border border-gray-100">
             <div className="text-sm font-medium text-gray-500 mb-1">Total Clients</div>

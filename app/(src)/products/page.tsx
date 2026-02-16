@@ -18,7 +18,6 @@ async function getProducts(page: number, limit: number, category?: string) {
 
     const products = await query(sql, values);
 
-    // Get total count
     let countSql = "SELECT COUNT(*) as total FROM products";
     const countValues: (string | number)[] = [];
     if (category) {

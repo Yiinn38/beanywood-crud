@@ -28,9 +28,9 @@ export function StatsCards({ totalSales, totalProducts, activeClients, dailyReve
       icon: IconCoffee,
       trend: lowStockCount,
       trendLabel: "low stock alerts",
-      trendColor: "text-amber-700", // Alert color
-      trendPrefix: "", // Just the number
-      iconBg: "bg-emerald-100/50 text-emerald-600", // Using emerald based on screenshot, though 'coffee' might suggest brown
+      trendColor: "text-amber-700",
+      trendPrefix: "",
+      iconBg: "bg-emerald-100/50 text-emerald-600",
       formattedValue: totalProducts.toLocaleString(),
     },
     {
