@@ -1,0 +1,10 @@
+@reference "tailwindcss";
+
+
+.link {
+  @apply mr-2 transition-all duration-200 hover:text-amber-700 hover:scale-105 hover:border-amber-700/30 hover:border-2;
+}
+
+.active-link {
+  @apply text-amber-700 bg-amber-600/30 ;
+}
