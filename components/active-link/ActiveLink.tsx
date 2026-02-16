@@ -1,21 +1,25 @@
 "use client";
 
 import Link from "next/link";
-import style from "./ActiveLink.module.css";
 import { usePathname } from "next/navigation";
 
 interface Props {
   path: string;
-  text: string; 
+  text: string;
   icon: React.ElementType;
 }
 
 export const ActiveLink = ({ path, text, icon: Icon }: Props) => {
-  const pathName = usePathname();
+  const pathname = usePathname();
+  const isActive = pathname === path;
 
   return (
-    <Link href={path} className={`${style.link} ${pathName === path && style["active-link"]} text-md text-center flex gap-2 px-4 py-4 rounded-2xl border-white/30 border`}>
-      <Icon stroke={1.5} size={24} />
+    <Link
+      href={path}
+      className={`group flex items-center gap-3 px-4 py-3 rounded-xl font-semibold text-sm transition-all duration-200 ${isActive ? "bg-amber-100 text-amber-700 shadow-sm" : "text-zinc-600 hover:bg-amber-50 hover:text-amber-700"}`}
+    >
+      <Icon stroke={1.8} size={22} className={`transition-transform ${isActive ? "scale-110" : "group-hover:scale-110"}`} />
+
       {text}
     </Link>
   );

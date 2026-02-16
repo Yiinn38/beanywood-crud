@@ -18,33 +18,37 @@ const user = {
 
 export const Sidebar = () => {
   return (
-    <aside className="flex flex-col w-64 h-screen bg-white rounded-r-3xl py-5 shadow-2xl ">
-      <Link href="/" className="flex gap-2 items-center text-2xl text-amber-950 px-6 font-bold  hover:scale-105 transition-all duration-200">
-        <IconCoffee stroke={2} size={28} className="text-amber-700" />
-        Beanywood
-      </Link>
+    <aside className="flex flex-col w-72 h-screen bg-white rounded-3xl shadow-2xl border-r border-zinc-200">
+      <div className="p-6">
+        <Link href="/" className="flex gap-3 items-center text-2xl text-amber-950 font-extrabold hover:opacity-80 transition-opacity">
+          <div className="bg-amber-100 p-2 rounded-xl text-amber-700">
+            <IconCoffee stroke={2.5} size={28} />
+          </div>
+          Beanywood
+        </Link>
+      </div>
 
-      <hr className="my-4 border-amber-700/30" />
-
-      <div className="flex flex-col gap-4 px-4">
+      <div className="flex flex-col gap-2 px-4 mt-4">
+        <p className="px-4 text-xs font-bold text-zinc-400 uppercase tracking-widest mb-2">Menu</p>
         {routes.map((route) => (
           <ActiveLink key={route.path} path={route.path} text={route.text} icon={route.icon} />
         ))}
       </div>
 
-      <div className="mt-auto pt-6">
-        <hr className="my-4 border-amber-700/30" />
-        <div className="px-2 py-2">
-          <div className="flex items-center gap-2">
-            <IconUserCircle stroke={2} size={50} className="text-amber-700" />
-
-            <div className="flex flex-col text-amber-700">
-              <p className="text-lg font-bold">{user.name}</p>
-              <p className="text-md">{user.role}</p>
+      <div className="mt-auto p-4">
+        <div className="bg-amber-50 rounded-2xl p-4 border border-amber-100">
+          <div className="flex items-center gap-3">
+            <div className="bg-white p-2 rounded-full text-amber-700 shadow-sm">
+               <IconUserCircle stroke={2} size={24} />
             </div>
 
-            <Link href="/" className="ml-auto mr-2 text-amber-950 hover:text-amber-700 hover:scale-105 transition-all duration-200">
-              <IconLogout stroke={2} size={28} />
+            <div className="flex flex-col">
+              <p className="text-sm font-bold text-amber-950">{user.name}</p>
+              <p className="text-xs text-amber-700/70 font-medium">{user.role}</p>
+            </div>
+
+            <Link href="/" className="ml-auto text-amber-400 hover:text-amber-700 transition-colors">
+              <IconLogout stroke={2} size={20} />
             </Link>
           </div>
         </div>
