@@ -3,9 +3,12 @@
 import { IconCoffee, IconLock, IconUser, IconEye, IconEyeOff } from "@tabler/icons-react";
 import { useState } from "react";
 import { LoginBanner } from "../components/login/LoginBanner";
+import { useRouter } from "next/navigation";
 
 export default function Home() {
   const [showPassword, setShowPassword] = useState(false);
+  const router = useRouter();
+  const [loading, setLoading] = useState(false);
 
   const stats = {
     ordersServed: 142,
@@ -13,9 +16,18 @@ export default function Home() {
     growthPercentage: 24,
   };
 
+  const handleLogin = (e: React.FormEvent) => {
+    e.preventDefault();
+    setLoading(true);
+
+    setTimeout(() => {
+      router.push("/dashboard");
+    }, 1000);
+  };
+
   return (
     <main className="flex items-center justify-center p-10 h-screen bg-zinc-900/10">
-      <div className="bg-white flex w-full max-w-5xl h-[850px] rounded-3xl shadow-2xl overflow-hidden">
+      <div className="bg-white flex w-full max-w-5xl h-212.5 rounded-3xl shadow-2xl overflow-hidden">
         <div className="flex flex-col justify-center p-20 w-1/2">
           <div className="flex gap-3 items-center text-2xl text-amber-950 font-extrabold mb-12">
             <div className="bg-amber-100 p-2 rounded-xl text-amber-700">
@@ -29,13 +41,7 @@ export default function Home() {
             <p className="text-slate-500 font-medium">Please enter your details to sign in.</p>
           </div>
 
-          <form
-            className="flex flex-col gap-5"
-            onSubmit={(e) => {
-              e.preventDefault();
-              alert("Login successful");
-            }}
-          >
+          <form className="flex flex-col gap-5" onSubmit={handleLogin}>
             <div className="flex flex-col gap-2">
               <label className="font-bold text-sm text-slate-700">Username</label>
               <div className="relative">
@@ -73,7 +79,9 @@ export default function Home() {
               </div>
             </div>
 
-            <button className="bg-amber-700 hover:bg-amber-800 text-white p-4 rounded-xl font-bold text-lg transition shadow-lg shadow-amber-700/20 mt-4 cursor-pointer">Sign in</button>
+            <button type="submit" disabled={loading} className="bg-amber-700 hover:bg-amber-800 text-white p-4 rounded-xl font-bold text-lg transition shadow-lg shadow-amber-700/20 mt-4 cursor-pointer">
+              {loading ? "Signing in..." : "Sign in"}
+            </button>
           </form>
 
           <p className="text-zinc-400 text-xs mt-auto">© 2024 Beanywood. All rights reserved.</p>
