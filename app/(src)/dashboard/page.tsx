@@ -5,7 +5,10 @@ export const metadata = {
 export default function DashboardPage() {
   return (
     <>
-      <span className="text-7xl">Dashboard</span>
+      <nav>
+        <h1 className="text-4xl text-amber-950 font-bold">Dashboard</h1>
+        <p className="text-lg text-amber-700">Welcome back, here's what's happening at the shop today.</p>
+      </nav>
     </>
   );
 }

@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { ActiveLink } from "../active-link/ActiveLink";
-import { IconLayoutDashboard, IconMilk, IconUsers, IconCoins, IconLogout, IconCoffee } from "@tabler/icons-react";
+import { IconLayoutDashboard, IconMilk, IconUsers, IconCoins, IconLogout, IconCoffee, IconUserCircle } from "@tabler/icons-react";
 
 const routes = [
   { path: "/dashboard", text: "Dashboard", icon: IconLayoutDashboard },
@@ -10,6 +10,11 @@ const routes = [
   { path: "/customers", text: "Customers", icon: IconUsers },
   { path: "/sales", text: "Sales", icon: IconCoins },
 ];
+
+const user = {
+  name: "Cesar Romero",
+  role: "Manager",
+};
 
 export const Sidebar = () => {
   return (
@@ -29,11 +34,19 @@ export const Sidebar = () => {
 
       <div className="mt-auto pt-6">
         <hr className="my-4 border-amber-700/30" />
-        <div className="px-4">
-          <Link href="/" className="flex gap-2 items-center text-md text-amber-700 px-6 hover:text-amber-700 hover:scale-105 transition-all duration-200">
-            <IconLogout stroke={2} size={28} />
-            Logout
-          </Link>
+        <div className="px-2 py-2">
+          <div className="flex items-center gap-2">
+            <IconUserCircle stroke={2} size={50} className="text-amber-700" />
+
+            <div className="flex flex-col text-amber-700">
+              <p className="text-lg font-bold">{user.name}</p>
+              <p className="text-md">{user.role}</p>
+            </div>
+
+            <Link href="/" className="ml-auto mr-2 text-amber-950 hover:text-amber-700 hover:scale-105 transition-all duration-200">
+              <IconLogout stroke={2} size={28} />
+            </Link>
+          </div>
         </div>
       </div>
     </aside>
